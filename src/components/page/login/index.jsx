@@ -1,5 +1,6 @@
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 export default function LoginPage() {
   return (
     <>
@@ -23,7 +24,7 @@ export default function LoginPage() {
         </div>
         <div className="flex justify-center items-center pt-5">
           <button className="btn rounded-none w-[400px] h-[10px] bg-white hover:bg-blue-50">
-            <FaGoogle /> Continue with Google
+            <FcGoogle /> Continue with Google
           </button>
         </div>
         <div className="flex justify-center items-center pt-2">
