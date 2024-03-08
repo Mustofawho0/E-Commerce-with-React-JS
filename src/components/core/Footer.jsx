@@ -6,47 +6,53 @@ export default function Footer() {
   const router = useLocation();
   return (
     <>
-      <div className={`${router.pathname === "/signup" ? "hidden" : "block"}`}>
-        <div className="bg-gray-100 h-[360px]">
-          <div className="grid grid-cols-4 px-36 py-5 tracking-wider">
+      <div
+        className={`${
+          router.pathname === "/signup" || router.pathname === "/register"
+            ? "hidden"
+            : "block"
+        }`}
+      >
+        <div className="bg-gray-100 h-[360px] ">
+          <div className="grid grid-cols-4 px-36 py-5 tracking-wider ">
             <div>
               <span className="font-bold font-sans">Depop</span>
-              <ul className="py-7">
-                <li className="py-3">
+              <ul className="py-7 w-[20%]">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">About</a>
                 </li>
-                <li className="py-3">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">Careers</a>
                 </li>
-                <li className="py-3">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">Blog</a>
                 </li>
-                <li className="py-3">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">News</a>
                 </li>
-                <li className="py-3">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">Impact</a>
                 </li>
               </ul>
             </div>
             <div>
               <span className="font-bold font-sans">Sell</span>
-              <ul className="py-7">
-                <li className="py-3">
+              <ul className="py-7 w-[44%]">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">Sell on Depop</a>
                 </li>
-                <li className="py-3">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">Depop Amplified</a>
                 </li>
               </ul>
             </div>
             <div>
               <span className="font-bold font-sans">Help</span>
-              <ul className="py-7">
-                <li className="py-3">
+              <ul className="py-7  w-[35%]">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">Help Centre</a>
                 </li>
-                <li className="py-3">
+                <li className="py-3 hover:text-red-500">
                   <a href="#">Safety Centre</a>
                 </li>
               </ul>
@@ -65,57 +71,43 @@ export default function Footer() {
           </div>
         </div>
         <div className="bg-gray-300 h-[80px] px-28 py-2 flex items-center">
-          <div className="dropdown dropdown-top flex">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn m-1 rounded-none bg-transparent tracking-wide border-none w-[150px]"
+          <div className=" pl-6">
+            <select
+              className="w-[140px] h-[40px] text-sm font-sans tracking-wide bg-transparent hover:bg-white hover:border-none outline-none"
+              name=""
+              id=""
+              defaultValue="United States"
             >
-              United States <RiArrowDropDownLine />
-            </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>United States</a>
-              </li>
-              <li>
-                <a>Indonesia</a>
-              </li>
-            </ul>
+              <option value="">United States</option>
+              <option value="">Indonesia</option>
+              <option value="">United Kingdom</option>
+              <option value="">Japan</option>
+            </select>
           </div>
-          <div className="dropdown dropdown-top flex-1">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn m-1 rounded-none bg-transparent tracking-wide border-none w-[150px]"
+          <div className="pl-2 flex-1">
+            <select
+              className="w-[100px] h-[40px] text-sm font-sans tracking-wide bg-transparent hover:bg-white hover:border-none outline-none"
+              name=""
+              id=""
+              defaultValue="English"
             >
-              United States <RiArrowDropDownLine />
-            </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>United States</a>
-              </li>
-              <li>
-                <a>Indonesia</a>
-              </li>
-            </ul>
+              <option value="">Francais</option>
+              <option value="">English</option>
+              <option value="">Deutsch</option>
+              <option value="">Italiano</option>
+            </select>
           </div>
           <div className="flex gap-10 px-14 tracking-wide">
-            <span>
+            <span className="hover:text-red-500">
               <a href="#">Sitmaps</a>
             </span>
-            <span>
+            <span className="hover:text-red-500">
               <a href="#">Terms and Conditions</a>
             </span>
-            <span>
+            <span className="hover:text-red-500">
               <a href="#">Privacy</a>
             </span>
-            <span>
+            <span className="hover:text-red-500">
               <a href="#">Cookies</a>
             </span>
           </div>

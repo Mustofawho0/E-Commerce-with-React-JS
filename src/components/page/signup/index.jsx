@@ -1,6 +1,7 @@
 import { FaGoogle } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
+import { Link } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
 
 export default function SignUp() {
@@ -35,11 +36,13 @@ export default function SignUp() {
             <FaApple /> Continue with Apple
           </button>
         </div>
-        <div className="flex justify-center items-center pt-2">
-          <button className="btn rounded-none w-[400px] bg-white text-black border border-black hover:border-black">
-            Continue with Email
-          </button>
-        </div>
+        <Link to="/register">
+          <div className="flex justify-center items-center pt-2">
+            <button className="btn rounded-none w-[400px] bg-white text-black border border-black hover:border-black">
+              Continue with Email
+            </button>
+          </div>
+        </Link>
       </div>
     </>
   );

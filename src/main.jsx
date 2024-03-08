@@ -7,6 +7,7 @@ import LoginPage from "./components/page/login/index.jsx";
 import Navbar from "./components/core/Navbar.jsx";
 import HomePage from "./components/page/home/index.jsx";
 import SignUp from "./components/page/signup/index.jsx";
+import Register from "./components/page/register/index.jsx";
 
 const routerComponent = createBrowserRouter([
   {
@@ -21,9 +22,13 @@ const routerComponent = createBrowserRouter([
         element: <LoginPage />,
       },
       {
-        path :'/signup',
-        element : <SignUp />
-      }
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
     ],
   },
 ]);
