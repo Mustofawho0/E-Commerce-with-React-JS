@@ -4,8 +4,11 @@ import LoginPage from "./components/page/login";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { userContext } from "./supports/context/useUserContext";
+import { useState } from "react";
 
 function App() {
+  
   return (
     <>
       <Navbar />
