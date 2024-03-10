@@ -52,6 +52,7 @@ export default function Navbar() {
               <button className="btn rounded-none bg-black text-white hover:bg-red-600 hidden lg:block">
                 Sell Now
               </button>
+              {/* KONDISIONAL */}
               {userData !== null ? (
                 // <h1>Hello, {userData}</h1>
                 <div className="dropdown dropdown-end border-none pt-2">
@@ -95,6 +96,7 @@ export default function Navbar() {
                   </Link>
                 </>
               )}
+              {/* END KONDISIONAL */}
             </div>
           </div>
           <div>

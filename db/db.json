@@ -7,6 +7,30 @@
       "email": "awdawd@gmail.com",
       "username": "mustofa",
       "password": "123456"
+    },
+    {
+      "id": "6dcf",
+      "firstName": "Mustofa",
+      "lastName": "who",
+      "email": "mustofawho12@gmail.com",
+      "username": "mustofawho",
+      "password": "123456"
+    },
+    {
+      "id": "8bd5",
+      "firstName": "Test",
+      "lastName": "Test1",
+      "email": "test2@gmail.com",
+      "username": "inipercobaan",
+      "password": "123456"
+    },
+    {
+      "id": "8b8b",
+      "firstName": "cobaan",
+      "lastName": "cobaan2",
+      "email": "cobaan@gmail.com",
+      "username": "cobaan123",
+      "password": "123456"
     }
   ],
   "product": [
@@ -19,7 +43,6 @@
       "deskripsiProduct": "vintage cream nautica zip up size large fire piece",
       "image-url": "https://media-photos.depop.com/b1/37508152/1787122791_069c5789d25c4b6089826059bb499e09/P0.jpg"
     },
-
     {
       "id": "172",
       "nameProduct": "H&M Men's Sweatshirt",

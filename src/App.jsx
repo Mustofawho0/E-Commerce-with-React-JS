@@ -14,7 +14,7 @@ function App() {
     <>
       <userContext.Provider value={{ userData, setUserData }}>
         <Navbar />
-        <div className="py-32">
+        <div className="h-[100vh]">
           <Outlet />
           <ToastContainer />
         </div>

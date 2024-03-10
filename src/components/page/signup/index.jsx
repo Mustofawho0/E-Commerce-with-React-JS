@@ -8,7 +8,7 @@ export default function SignUp() {
   // const router = useLocation();
   return (
     <>
-      <div>
+      <div className="pt-[120px]">
         <div className="flex justify-center items-center">
           <img
             src="https://assets.depop.com/web/assets/sellerOnboarding/sticker-smile.png"
@@ -22,7 +22,9 @@ export default function SignUp() {
           <p>
             Already got an account?
             <span className="text-blue-600">
-              <a href="#"> Log in</a>
+              <Link to="/login">
+                <a href=""> Log in</a>
+              </Link>
             </span>
           </p>
         </div>

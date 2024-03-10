@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { userContext } from "../../../supports/context/useUserContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   const nav = useNavigate();
@@ -30,7 +31,6 @@ export default function LoginPage() {
       nav("/");
       // setUserData(findData.data[0].email);
       resetForm();
-      // console.log(findData);
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -49,7 +49,7 @@ export default function LoginPage() {
         }}
       >
         <Form>
-          <div>
+          <div className="pt-[120px]">
             <div className="flex justify-center items-center">
               <img
                 src="https://assets.depop.com/web/assets/sellerOnboarding/sticker-smile.png"
@@ -63,7 +63,9 @@ export default function LoginPage() {
               <p>
                 Dont have an account?
                 <span className="text-blue-600">
-                  <a href="#"> Sign Up</a>
+                  <Link to="/signup">
+                    <a href=""> Sign Up</a>
+                  </Link>
                 </span>
               </p>
             </div>
@@ -116,7 +118,10 @@ export default function LoginPage() {
               </span>
             </div>
             <div className="flex justify-center items-center pt-2">
-              <button className="btn w-[400px] rounded-none bg-black text-white hover:bg-gray-600 text-xl tracking-wider">
+              <button
+                type="submit"
+                className="btn w-[400px] rounded-none bg-black text-white hover:bg-gray-600 text-xl tracking-wider"
+              >
                 Submit
               </button>
             </div>

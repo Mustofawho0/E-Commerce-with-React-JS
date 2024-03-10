@@ -13,8 +13,8 @@ export default function Footer() {
             : "block"
         }`}
       >
-        <div className="bg-gray-100 h-[360px] ">
-          <div className="grid grid-cols-4 px-36 py-5 tracking-wider ">
+        <div className="bg-gray-100 h-[360px]">
+          <div className="grid grid-cols-4 px-36 py-5 tracking-wider">
             <div>
               <span className="font-bold font-sans">Depop</span>
               <ul className="py-7 w-[20%]">
@@ -76,7 +76,7 @@ export default function Footer() {
               className="w-[140px] h-[40px] text-sm font-sans tracking-wide bg-transparent hover:bg-white hover:border-none outline-none"
               name=""
               id=""
-              defaultValue="United States"
+              defaultValue="United Kingdom"
             >
               <option value="">United States</option>
               <option value="">Indonesia</option>
@@ -91,8 +91,8 @@ export default function Footer() {
               id=""
               defaultValue="English"
             >
-              <option value="">Francais</option>
               <option value="">English</option>
+              <option value="">Francais</option>
               <option value="">Deutsch</option>
               <option value="">Italiano</option>
             </select>
