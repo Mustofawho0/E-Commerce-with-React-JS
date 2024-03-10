@@ -8,16 +8,19 @@ import { userContext } from "./supports/context/useUserContext";
 import { useState } from "react";
 
 function App() {
-  
+  const [userData, setUserData] = useState(null);
+
   return (
     <>
-      <Navbar />
-      <div className="py-32">
-        <Outlet />
-        <ToastContainer />
-      </div>
-      <Footer />
-      {/* <LoginPage /> */}
+      <userContext.Provider value={{ userData, setUserData }}>
+        <Navbar />
+        <div className="py-32">
+          <Outlet />
+          <ToastContainer />
+        </div>
+        <Footer />
+        {/* <LoginPage /> */}
+      </userContext.Provider>
     </>
   );
 }

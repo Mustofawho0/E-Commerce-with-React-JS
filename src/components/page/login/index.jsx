@@ -4,9 +4,14 @@ import { ValidasiLogin } from "../../../supports/schema/loginSchema";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { userContext } from "../../../supports/context/useUserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
-  const handleLogin = async (value) => {
+  const nav = useNavigate();
+  const { setUserData } = useContext(userContext);
+  const handleLogin = async (value, resetForm) => {
     try {
       let findData;
 
@@ -21,6 +26,10 @@ export default function LoginPage() {
       }
       if (findData.data.length === 0) throw new Error("User Not Found!");
       toast.success("Login Berhasil!");
+      setUserData(findData.data[0].firstName);
+      nav("/");
+      // setUserData(findData.data[0].email);
+      resetForm();
       // console.log(findData);
     } catch (error) {
       toast.error(error.message);
@@ -35,8 +44,8 @@ export default function LoginPage() {
           password: "",
         }}
         validationSchema={ValidasiLogin}
-        onSubmit={(value) => {
-          handleLogin(value);
+        onSubmit={(value, { resetForm }) => {
+          handleLogin(value, resetForm);
         }}
       >
         <Form>

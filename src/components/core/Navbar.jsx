@@ -3,9 +3,12 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoBagOutline } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { userContext } from "../../supports/context/useUserContext";
 
 export default function Navbar() {
   const router = useLocation();
+  const { userData } = useContext(userContext);
   return (
     <>
       <div
@@ -49,16 +52,49 @@ export default function Navbar() {
               <button className="btn rounded-none bg-black text-white hover:bg-red-600 hidden lg:block">
                 Sell Now
               </button>
-              <Link to="/signup">
-                <button className="btn rounded-none bg-black text-white hover:bg-gray-500 lg:bg-white border border-black lg:text-black hover:border-black">
-                  Sign Up
-                </button>
-              </Link>
-              <Link to="/login">
-                <button className="rounded-none bg-white text-black text-lg font-bold hover:text-red-600 hidden lg:block">
-                  Log in
-                </button>
-              </Link>
+              {userData !== null ? (
+                // <h1>Hello, {userData}</h1>
+                <div className="dropdown dropdown-end border-none pt-2">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className=" bg-transparent border-none hover:bg-white"
+                  >
+                    <div className="avatar">
+                      <div className="w-12 rounded-full">
+                        <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    tabIndex={0}
+                    className="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-gray-200 text-black"
+                  >
+                    <div className="card-body bg-gray-200 flex items-center">
+                      <div className="avatar flex justify-center items-center">
+                        <div className="w-12 rounded-full">
+                          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        </div>
+                      </div>
+                      <h3 className="card-title ">Hello, {userData}</h3>
+                      <p>you can use any element as a dropdown.</p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <Link to="/signup">
+                    <button className="btn rounded-none bg-black text-white hover:bg-gray-500 lg:bg-white border border-black lg:text-black hover:border-black">
+                      Sign Up
+                    </button>
+                  </Link>
+                  <Link to="/login">
+                    <button className="rounded-none bg-white text-black text-lg font-bold hover:text-red-600 hidden lg:block">
+                      Log in
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
           <div>
