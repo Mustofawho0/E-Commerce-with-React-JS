@@ -19,7 +19,7 @@ export default function LoginPage() {
           `http://localhost:5000/users?username=${value.username}&password=${value.password}`
         );
       }
-      if (findData.data.length === 0) throw new Error("Data belum teregister");
+      if (findData.data.length === 0) throw new Error("User Not Found!");
       toast.success("Login Berhasil!");
       // console.log(findData);
     } catch (error) {
