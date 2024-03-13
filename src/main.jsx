@@ -8,6 +8,9 @@ import Navbar from "./components/core/Navbar.jsx";
 import HomePage from "./components/page/home/index.jsx";
 import SignUp from "./components/page/signup/index.jsx";
 import Register from "./components/page/register/index.jsx";
+import Profile from "./components/page/profile/index.jsx";
+import Product from "./components/page/product/index.jsx";
+import DetailProduct from "./components/page/detailProduct/index.jsx";
 
 const routerComponent = createBrowserRouter([
   {
@@ -28,6 +31,18 @@ const routerComponent = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/product",
+        element: <Product />,
+      },
+      {
+        path: "/detail/:productId",
+        element: <DetailProduct />,
       },
     ],
   },

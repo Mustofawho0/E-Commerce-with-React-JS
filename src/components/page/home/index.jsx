@@ -1,7 +1,7 @@
 export default function HomePage() {
   return (
     <>
-      <div className="pt-[120px]">HomePage</div>
+      <div className="pt-[150px]">HomePage</div>
     </>
   );
 }

@@ -27,8 +27,15 @@ export default function LoginPage() {
       }
       if (findData.data.length === 0) throw new Error("User Not Found!");
       toast.success("Login Berhasil!");
-      setUserData(findData.data[0].firstName);
-      nav("/");
+      setUserData({
+        id: findData.data[0].id,
+        username: findData.data[0].username,
+      });
+      localStorage.setItem("dataUser", JSON.stringify({
+        id : findData.data[0].id,
+        username : findData.data[0].username
+      }));
+      nav("/product");
       // setUserData(findData.data[0].email);
       resetForm();
     } catch (error) {

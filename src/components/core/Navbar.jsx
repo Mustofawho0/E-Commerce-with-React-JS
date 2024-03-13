@@ -3,18 +3,44 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoBagOutline } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { userContext } from "../../supports/context/useUserContext";
+import { CgProfile } from "react-icons/cg";
+import { IoIosLogOut } from "react-icons/io";
+import axios from "axios";
 
 export default function Navbar() {
   const router = useLocation();
   const { userData } = useContext(userContext);
+  const { setUserData } = useContext(userContext);
+
+  const handleKeepLogin = async () => {
+    try {
+      let usersData = localStorage.getItem("dataUser");
+      usersData = JSON.parse(usersData);
+
+      const res = await axios.get(
+        `http://localhost:5000/users/${usersData.id}`
+      );
+      setUserData({
+        id: res.data.id,
+        username: res.data.username,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleKeepLogin();
+  }, []);
+
   return (
     <>
       <div
         className={`${router.pathname === "/register" ? "hidden" : "block"}`}
       >
-        <div className="fixed w-full bg-white">
+        <div className="fixed w-full bg-white z-10">
           <div className="flex items-center px-10 py-3 bg-base-100">
             <div className="flex-1 flex items-center gap-3">
               <Link to="/">
@@ -77,8 +103,25 @@ export default function Navbar() {
                           <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                         </div>
                       </div>
-                      <h3 className="card-title ">Hello, {userData}</h3>
-                      <p>you can use any element as a dropdown.</p>
+                      <h3 className="card-title ">
+                        Hello, {userData.username}
+                      </h3>
+                      {/* <p>you can use any element as a dropdown.</p> */}
+                      <div className="divider bg-black h-auto w-auto-ms my-[1px]"></div>
+                    </div>
+                    <div className="flex flex-col justify-center items-center ">
+                      <Link to="/profile">
+                        <div className="mx-4">
+                          <button className="btn hover:bg-red-400 h-[10px] w-[200px] font-bold text-[16px] tracking-wide font-sans rounded-none">
+                            <CgProfile size={20} /> Profile
+                          </button>
+                        </div>
+                      </Link>
+                      <div className="mx-4 pt-2">
+                        <button className="btn hover:bg-red-400 h-[10px] w-[200px] font-bold text-[16px] tracking-wide font-sans rounded-none">
+                          <IoIosLogOut size={20} /> Logout
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

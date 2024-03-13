@@ -13,7 +13,7 @@ export default function Footer() {
             : "block"
         }`}
       >
-        <div className="bg-gray-100 h-[360px]">
+        <div className="bg-gray-100 h-[360px] z-10">
           <div className="grid grid-cols-4 px-36 py-5 tracking-wider">
             <div>
               <span className="font-bold font-sans">Depop</span>

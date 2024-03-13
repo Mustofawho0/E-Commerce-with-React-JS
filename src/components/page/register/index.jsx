@@ -55,8 +55,8 @@ export default function Register() {
           {({ dirty, isValid }) => {
             return (
               <Form>
-                <div className="flex flex-col items-center py-[70px] font-sans">
-                  <p className="font-bold text-2xl font-sans tracking-wide pb-[30px]">
+                <div className="flex flex-col items-center py-[30px] font-sans">
+                  <p className="font-bold text-2xl font-sans tracking-wide pb-[5px]">
                     Sign Up
                   </p>
                   <div className="flex flex-row gap-2 ">
@@ -169,12 +169,10 @@ export default function Register() {
                     <div className="pt-3 w-[428px] ">
                       <input
                         type="checkbox"
-                        name=""
-                        id=""
-                        className=""
+                        className="checkbox checkbox-xs"
                         required
                       />
-                      <span className="pl-2 text-[13px] text-justify">
+                      <span className="pl-2 text-[13px] text-justify ">
                         Get exclusive offers, trend updates and tips for
                         shopping and selling on Depop
                       </span>

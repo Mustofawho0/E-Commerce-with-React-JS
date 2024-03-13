@@ -14,7 +14,7 @@ function App() {
     <>
       <userContext.Provider value={{ userData, setUserData }}>
         <Navbar />
-        <div className="h-[100vh]">
+        <div className="">
           <Outlet />
           <ToastContainer />
         </div>
