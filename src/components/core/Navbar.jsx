@@ -8,12 +8,25 @@ import { userContext } from "../../supports/context/useUserContext";
 import { CgProfile } from "react-icons/cg";
 import { IoIosLogOut } from "react-icons/io";
 import axios from "axios";
+import { cartContext } from "../../supports/context/useCartContext";
 
 export default function Navbar() {
   const router = useLocation();
   const { userData } = useContext(userContext);
   const { setUserData } = useContext(userContext);
+  const { userCart, setUserCart } = useContext(cartContext);
 
+
+  const onHandleNotifCart = async() => {
+    try {
+      let usersData = localStorage.getItem("dataUser");
+      usersData = JSON.parse(usersData);
+      const dataCart = await axios.get(`http://localhost:5000/carts?userId=${usersData.id}`);
+      setUserCart(dataCart.data.length)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleKeepLogin = async () => {
     try {
       let usersData = localStorage.getItem("dataUser");
@@ -33,8 +46,14 @@ export default function Navbar() {
 
   useEffect(() => {
     handleKeepLogin();
+    onHandleNotifCart()
   }, []);
 
+  const onHandleUserLogout = () => {
+    localStorage.removeItem("dataUser");
+    setUserData({});
+    window.location.reload();
+  };
   return (
     <>
       <div
@@ -68,12 +87,18 @@ export default function Navbar() {
                 />
               </div>
             </div>
-            <div className="flex-1 gap-2 flex justify-end items-center pr-6">
+            <div className="flex-1 gap-5 flex justify-end items-center pr-6">
               <div className="hover:text-red-500">
-                <FaRegHeart size={20} />
+                <FaRegHeart size={30} />
               </div>
               <div className="hover:text-red-500">
-                <IoBagOutline size={20} />
+                {/* Taroh disini nanti nya */}
+                <div className="indicator">
+                  <span className="indicator-item badge badge-error text-[10px]">{userCart}</span>
+                  <button className=" h-[40px] bg-transparent">
+                    <IoBagOutline size={30} />
+                  </button>
+                </div>
               </div>
               <button className="btn rounded-none bg-black text-white hover:bg-red-600 hidden lg:block">
                 Sell Now
@@ -118,7 +143,10 @@ export default function Navbar() {
                         </div>
                       </Link>
                       <div className="mx-4 pt-2">
-                        <button className="btn hover:bg-red-400 h-[10px] w-[200px] font-bold text-[16px] tracking-wide font-sans rounded-none">
+                        <button
+                          onClick={onHandleUserLogout}
+                          className="btn hover:bg-red-400 h-[10px] w-[200px] font-bold text-[16px] tracking-wide font-sans rounded-none"
+                        >
                           <IoIosLogOut size={20} /> Logout
                         </button>
                       </div>

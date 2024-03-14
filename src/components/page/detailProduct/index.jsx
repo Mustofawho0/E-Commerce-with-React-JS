@@ -6,6 +6,7 @@ import Loading from "../../core/Loading";
 import { useContext } from "react";
 import { userContext } from "../../../supports/context/useUserContext";
 import { toast } from "react-toastify";
+import { cartContext } from "../../../supports/context/useCartContext";
 
 export default function DetailProduct() {
   const params = useParams();
@@ -13,6 +14,7 @@ export default function DetailProduct() {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { userData } = useContext(userContext);
+  const { setUserCart } = useContext(cartContext);
 
   const onFetchProducts = async () => {
     try {
@@ -25,14 +27,40 @@ export default function DetailProduct() {
     }
   };
   const onHandleToCart = async () => {
+    let totalQty = 0;
     try {
       if (selectedSize === null) throw new Error("Select Size First!");
-      const res = await axios.post("http://localhost:5000/carts", {
-        userId: userData.id,
-        productId: product.id,
-        quantity,
-      });
-      // console.log(res)
+      // Untuk Check Product apakah sudah ada atau belum
+      const checkProductExist = await axios.get(
+        `http://localhost:5000/carts?userId=${userData.id}&productId=${product.id}`
+      );
+      // Kondisi jika Product belum ada akan ditambahkan ke dalam cart
+      if (checkProductExist.data.length === 0) {
+        await axios.post("http://localhost:5000/carts", {
+          userId: userData.id,
+          productId: product.id,
+          quantity,
+          size: selectedSize.size,
+        });
+      } else {
+        // Kondisi jika Product sudah ada dan akan di update untuk quantity
+        const currentQuantity = checkProductExist.data[0].quantity;
+        const newQuantity = currentQuantity + quantity;
+        // Untuk Check Stock dan tidak melebihi dari stok yang tersedia
+        if (newQuantity > selectedSize.stock)
+          return toast.error("Stock not enough!");
+
+        // Untuk update
+        await axios.patch(
+          `http://localhost:5000/carts/${checkProductExist.data[0].id}`,
+          {
+            quantity: newQuantity,
+          }
+        );
+      }
+      const dataCart = await axios.get(`http://localhost:5000/carts?userId=${userData.id}`);
+      setUserCart(dataCart.data.length)
+
       toast.success("Add to Cart Success!");
     } catch (error) {
       toast.error(error.message);
@@ -125,7 +153,10 @@ export default function DetailProduct() {
               <button className="btn w-full rounded-none bg-black text-white border-2 border-black hover:bg-red-500 hover:border-red-500 text-[15px] tracking-wide">
                 Buy Now
               </button>
-              <button onClick={onHandleToCart} className="btn w-full bg-white rounded-none border-2 border-black ext-[15px] tracking-wide hover:border-black">
+              <button
+                onClick={onHandleToCart}
+                className="btn w-full bg-white rounded-none border-2 border-black ext-[15px] tracking-wide hover:border-black"
+              >
                 Add to Bag
               </button>
             </div>
